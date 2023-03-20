@@ -7,12 +7,12 @@
 int main() {
 
     std::list<Song> playlist{
-            {"God's Plan",        "Drake",                     5},
-            {"Never Be The Same", "Camila Cabello",            5},
-            {"Pray For Me",       "The Weekend and K. Lamar",  4},
-            {"The Middle",        "Zedd, Maren Morris & Grey", 5},
-            {"Wait",              "Maroone 5",                 4},
-            {"Whatever It Takes", "Imagine Dragons",           3}          
+            {"Perfect",                "Ed-Sheeran",                     5},
+            {"Lose Yourself",          "Eminem",                         5},
+            {"Shake it off",           "Taylor Swift",                   4},
+            {"I want it that way",     "Backstreet boys",                5},
+            {"Ghosts n stuff",         "DeadMau5",                       4},
+            {"Party rock",             "LMFAO",                          3}          
     };
     
     std::list<Song>::iterator current_song = playlist.begin();
@@ -40,8 +40,8 @@ int main() {
             case 'P':
                  if(*current_song == playlist.front()){
                     current_song = playlist.end();
-                    current_song--;
                  }
+                current_song--;
                 play_current_song(*current_song);
                 break;
             case 'A':
@@ -49,6 +49,12 @@ int main() {
                     std :: string set_name, set_song;
                     int set_rating;
                     get_details(set_name, set_song, set_rating);
+                    if(set_rating > 5){
+                            set_rating = 5;
+                        }
+                        else if(set_rating < 0){
+                            set_rating = 0;
+                        }
                     playlist.emplace(current_song, Song{set_name, set_song, set_rating});
                     current_song--;
                     play_current_song(*current_song);
