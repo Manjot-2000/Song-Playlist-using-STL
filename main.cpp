@@ -41,7 +41,9 @@ int main() {
                  if(*current_song == playlist.front()){
                     current_song = playlist.end();
                  }
-                current_song--;
+                else {
+                    current_song--;
+                }
                 play_current_song(*current_song);
                 break;
             case 'A':
